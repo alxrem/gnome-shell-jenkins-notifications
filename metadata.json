@@ -1,0 +1,7 @@
+{
+   "shell-version": ["3.14", "3.16", "3.18", "3.20"],
+   "uuid": "jenkins-notifications@remizov.org",
+   "name": "Jenkins notifications",
+   "description": "Display notifications sent by Jenkins Notification plugin",
+   "url": "https://github.com/alxrem/jenkins-notifications@remizov.org"
+}
