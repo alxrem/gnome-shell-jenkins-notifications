@@ -41,6 +41,7 @@ function handleNotification(server, msg, query, client, user_data) {
     let data = JSON.parse(requestData);
     let title = data.name;
     let icon = Icons[data.build.status] || Icons.default;
+    let consoleOutputUrl = data.build.full_url + 'console';
 
     let message = data.build.phase;
     if (data.build.status) {
@@ -49,6 +50,12 @@ function handleNotification(server, msg, query, client, user_data) {
 
     let notification = new MessageTray.Notification(source);
     notification.update(title, message, {gicon: icon});
+    notification.addAction("Console output", function() {
+        Gio.app_info_launch_default_for_uri(
+            consoleOutputUrl,
+            global.create_app_launch_context(0, -1)
+        );
+    });
     source.notify(notification);
 
     msg.set_status(200);
